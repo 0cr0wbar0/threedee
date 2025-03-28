@@ -1,3 +1,5 @@
+<?php
+?>
 <!DOCTYPE html>
 <html lang="en" class="background">
 <head>
@@ -17,9 +19,9 @@
 </div>
 
 <div class="nav">
-<a href="static/bear_ears.html">Click for Bear</a><br/>
-<a href="static/cow_ears.html">Click for Cow</a><br/>
-<a href="static/blob_hands.html">Click for Unidentifiable Blob Thing</a>
+<a href="static/bear_ears.html">Hugh the Grizzly Bear</a><br/>
+<a href="static/cow_ears.html">Brianna the Highland Cow</a><br/>
+<a href="static/blob_hands.html">The Listener</a>
 </div>
 <div class="nav">
     <a href="static/about.html">About this Website</a>
