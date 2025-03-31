@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="stylesheet.css">
     <style>
         a {
-            color: #2a0079;
+            color: #ff8bfc;
         }
     </style>
 </head>
@@ -20,6 +20,10 @@
     <p>I produced nine 3D models in total: one for each character, then a further two each, which were copies of the same respective base model with a different animation.</p>
     <div class="imgs"><img src="bear1.png" alt="first bear model" width="330px" height="213.8px"><img src="cow1.png" alt="first cow model" width="330px" height="213.8px"><img src="blob1.png" alt="first blob model" width="330px" height="213.8px"></div>
     <p>Models and animations were produced in Blender, and the latter consisted of both keyframes and bone manipulation. Each 3D model was deliberately made with a low polygon count, allowing for a distinctive style without being too overwhelming to develop or load.</p>
+    <p>During development, there were a multitude of problems relating to exporting the animations. Firstly, the second animation I made for the second character used shape keys in a way that three.js simply refused to load, leading to that animation needing to be remade from scratch without shape keys.</p>
+    <p>A previous attempt to implement the 3D models took an immense amount of work and involved major refactors of almost all the three.js code managing the loading of animations, but all of this had to be scrapped when an issue arose that caused animations to be loaded and played on the wrong models, since some versions of the character models had separated meshes, whereas other meshes were unified. A much simpler solution was thankfully found, and is elaborated on further down this page.</p>
+    <p>For the third and final character, an animation involving the movement of his tongue took considerable effort to make, as Blender's system of bone rigging and weight painting had to be learned from scratch before the animation could even be keyed. Once keyed, however, the animation worked surprisingly well.</p>
+    <p>In addition, once the current method of loading the models was found to be workable, each of the models had to be re-exported so they all faced the same direction when loaded. In many cases, this meant deleting and redoing the keyframes for each animation, from scratch. This, sadly, couldn't feasibly be done with the animations for the final character, since he has multiple separate meshes for each of his models.</p>
 </div>
 <div class="text">
     <h2>Design</h2>
@@ -40,7 +44,10 @@
 </div>
 <div class="text">
     <h2>Deeper understanding</h2>
-    <p>This project was developed and deployed as a PHP website, and Blender was learned from scratch in order to create each model. It has also been deployed on my own personal web domain, with Caddy being used for web server hosting, rather than Apache or Nginx. Version control is also being used for the project, and evidence of this is available at <a href="https://github.com/0cr0wbar0/threedee">https://github.com/0cr0wbar0/threedee</a>. Changes are committed, then pushed to the repository on GitHub, then the most recent changes are pulled to my web server. Additionally, prior to undertaking this project, I had very little experience with JavaScript, and none at all with three.js, and this project has given me bountiful experience with both.</p>
+    <p>This project was developed and deployed as a PHP website, and Blender was learned from scratch in order to create each model. It has also been deployed on my own personal web domain, with Caddy being used for web server hosting, rather than Apache or Nginx.</p>
+    <p>I also refrained from using Bootstrap, despite it being recommended, as I have much more experience in vanilla CSS and am more confident in making my own styling rules, rather than relying on a new, unfamiliar library to handle this for me.</p>
+    <p>Version control is also being used for the project, and evidence of this is available at <a href="https://github.com/0cr0wbar0/threedee">https://github.com/0cr0wbar0/threedee</a>. Changes are committed, then pushed to the repository on GitHub, then the most recent changes are pulled to my web server.</p>
+    <p>Additionally, prior to undertaking this project, I had very little experience with JavaScript, and none at all with three.js, and this project has given me bountiful experience with both.</p>
 </div>
 <div class="text">
     <h2>About Us</h2>
