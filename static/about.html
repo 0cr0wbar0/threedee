@@ -1,85 +1,239 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="background">
-<head>
+  <head>
     <title>About this 3d webbed site</title>
-    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="stylesheet.css" />
     <style>
-        a {
-            color: #ff8bfc;
-        }
-        img {
-            transition: all .2s ease-in-out;
-        }
-        img:hover {
-            transform: scale(1.3);
-        }
+      a {
+        color: #ff8bfc;
+      }
+      img {
+        transition: all 0.2s ease-in-out;
+      }
+      img:hover {
+        transform: scale(1.3);
+      }
     </style>
-</head>
-<body class="box">
-
-<div class="text">
-    <h2>About</h2>
-    <p>My idea for a 3D web app project came from my pre-existing original characters, for which I have produced digital artwork in the past, as a hobby. I have had an interest in learning 3D modelling for fun for several years, so I struck upon the idea of modelling three of my OCs, and creating a showcase for these.</p>
-</div>
-<div class="text">
-    <h2>3D Models</h2>
-    <p>I produced nine 3D models in total: one for each character, then a further two each, which were copies of the same respective base model with a different animation.</p>
-    <div class="imgs"><img src="bear1.png" alt="first bear model" width="330px" height="213.8px"><img src="cow1.png" alt="first cow model" width="330px" height="213.8px"><img src="blob1.png" alt="first blob model" width="330px" height="213.8px"></div>
-    <p>Models and animations were produced in Blender, and the latter consisted of both keyframes and bone manipulation. Each 3D model was deliberately made with a low polygon count, allowing for a distinctive style without being too overwhelming to develop or load.</p>
-    <p>The first model's eyes were created by hand-drawing left and right blue eyes, keeping the low-poly style consistent by drawing this in a low-resolution and pixelated canvas, before mapping the textures onto the relevant faces of the model.</p>
-    <p>For all of the models, the colours were implemented using vertex groups and Blender's standard material creation tool. I ensured these colour choices, as well as my custom textures described above, were consistently clear and visible through my use of lighting. This involved constructing a DirectionalLight object in three.js, before attaching this object to the <em>camera, rather than the scene.</em> A HemisphereLight is also present in the scene, for some extra colour balancing. No matter the angle the models are viewed, their features are as visible as possible, without the lighting being so bright that the colours are distorted.</p>
-    <p>During development, there were a multitude of problems relating to exporting the animations. Firstly, the second animation I made for the second character used shape keys in a way that three.js simply refused to load, leading to that animation needing to be remade from scratch without shape keys.</p>
-    <p>A previous attempt to implement the 3D models took an immense amount of work and involved major refactors of almost all the three.js code managing the loading of animations, but all of this had to be scrapped when an issue arose that caused animations to be loaded and played on the wrong models, since some versions of the character models had separated meshes, whereas other meshes were unified. A much simpler solution was thankfully found, and is elaborated on further down this page.</p>
-    <p>For the third and final character, an animation involving the movement of his tongue took considerable effort to make, as Blender's system of bone rigging and weight painting had to be learned from scratch before the animation could even be keyed. Once keyed, however, the animation worked surprisingly well.</p>
-    <p>In addition, once the current method of loading the models was found to be workable, each of the models had to be re-exported so they all faced the same direction when loaded. In many cases, this meant deleting and redoing the keyframes for each animation, from scratch. This, sadly, couldn't feasibly be done with the animations for the final character, since he has multiple separate meshes for each of his models.</p>
-</div>
-<div class="text">
-    <h2>Design</h2>
-    <p>This site has been designed with a unique, yet simple and easy-to-use interface. The home page contains three links to three separate carousels of web pages wherein the model and animations of each character can be observed. The canvas containing the 3D models in each of these web pages, enabled with three.js, takes up the entire web page, and navigational buttons are overlayed onto the canvas. CSS hover rules were used for all of these buttons to conditionally highlight text and make the design more responsive.</p>
-</div>
-<div class="text">
-    <h2>Integration</h2>
-    <p>I conducted user testing for this project by using a friend's Windows laptop to download the project directory from its GitHub page, then hosting the directory using XAMPP. All models, lighting, colours, styling, and animations worked flawlessly.</p>
-    <p>Quotes from friend: "Everything worked", "I liked it a lot!"</p>
-    <p>My friend also had feedback regarding having customisable lighting options, such as toggles for switching between a point light and a hemisphere light.</p>
-    <p>I conducted further user testing with another colleague, who offered feedback regarding styling for the front page. Refactoring of the CSS styling for the project was necessary to respond to this feedback, and this spurred me to add further transformation styling for hyperlinks as well as images.</p>
-    <p>As a result of this piece of feedback, not only was the padding of the buttons on the homepage enlarged slightly, but now all links and buttons are simultaneously highlighted and temporarily grow in size when hovered over with a cursor.</p>
-</div>
-<div class="text">
-    <h2>Interaction</h2>
-    <p>This website offers orbital controls and interactive buttons on each model, allowing visitors to trigger three different animations on each character. The animations were designed to be amusing and engaging, and to fit well with the art style used for the characters. Each model also has an option for visitors to toggle a wireframe view of it with the click of a different button, giving a deeper insight into the construction of each model.</p>
-</div>
-<div class="text">
-    <h2>Implementation</h2>
-    <p>During development, I received feedback on the lighting used for each model showcase, namely, that the models were not sufficiently visible from certain angles. I fixed this by adding a light source at the same point in 3D space as the camera.</p>
-    <p>This website will be deployed and available on my personal web domain at <a href="https://threedee.cr0wbar.dev">https://threedee.cr0wbar.dev</a>.</p>
-</div>
-<div class="text">
-    <h2>Deeper understanding</h2>
-    <p>This project was developed and deployed as a PHP website, and Blender was learned from scratch in order to create each model. It has also been deployed on my own personal web domain, with Caddy being used for web server hosting, rather than Apache or Nginx.</p>
-    <p>I also refrained from using Bootstrap, despite it being recommended, as I have much more experience in vanilla CSS and am more confident in making my own styling rules, rather than relying on a new, unfamiliar library to handle this for me.</p>
-    <p>Version control is also being used for the project, and evidence of this is available at <a href="https://github.com/0cr0wbar0/threedee">https://github.com/0cr0wbar0/threedee</a>. Changes are committed, then pushed to the repository on GitHub, then the most recent changes are pulled to my web server.</p>
-    <p>Prior to undertaking this project, I had very little experience with JavaScript, and none at all with three.js, and this project has given me bountiful experience with both.</p>
-    <p>I made use of CSS media queries on this page to ensure that the three images displayed above are appropriately visible on a vertical or mobile viewport, and used flexboxes to achieve the same for the text content. I also added a transform function to CSS that causes each image to temporarily increase in size with a smooth animation when hovered over with a cursor.</p>
-</div>
-<div class="text">
-    <h2>About Us</h2>
-    <p>&check; I have included at least three models</p>
-    <p>&check; I am not submitting brands of any kind</p>
-    <p>&check; I have created a user interface to interact with my models</p>
-    <p>&check; I have tested my site with user testing</p>
-    <p>&check; I have submitted both a link to the live version and a zipped directory</p>
-    <p>&check; I have used this about page to provide development information</p>
-</div>
-<div class="text">
-    <p>&copy; Finnian Holland</p>
-</div>
-<div class="text">
-    <a href="https://github.com/0cr0wbar0"><img width="40" height="40" src="github.png" alt="github logo"></a>
-</div>
-<div class="nav">
-    <a href="../index.php">Back</a>
-</div>
-
-</body>
+  </head>
+  <body class="box">
+    <div class="text">
+      <h2>About</h2>
+      <p>
+        My idea for a 3D web app project came from my pre-existing original
+        characters, for which I have produced digital artwork in the past, as a
+        hobby. I have had an interest in learning 3D modelling for fun for
+        several years, so I struck upon the idea of modelling three of my OCs,
+        and creating a showcase for these.
+      </p>
+    </div>
+    <div class="text">
+      <h2>3D Models</h2>
+      <p>
+        I produced nine 3D models in total: one for each character, then a
+        further two each, which were copies of the same respective base model
+        with a different animation.
+      </p>
+      <div class="imgs">
+        <img
+          src="bear1.png"
+          alt="first bear model"
+          width="330px"
+          height="213.8px"
+        /><img
+          src="cow1.png"
+          alt="first cow model"
+          width="330px"
+          height="213.8px"
+        /><img
+          src="blob1.png"
+          alt="first blob model"
+          width="330px"
+          height="213.8px"
+        />
+      </div>
+      <p>
+        Models and animations were produced in Blender, and the latter consisted
+        of both keyframes and bone manipulation. Each 3D model was deliberately
+        made with a low polygon count, allowing for a distinctive style without
+        being too overwhelming to develop or load.
+      </p>
+      <p>
+        The first model's eyes were created by hand-drawing left and right blue
+        eyes, keeping the low-poly style consistent by drawing this in a
+        low-resolution and pixelated canvas, before mapping the textures onto
+        the relevant faces of the model.
+      </p>
+      <p>
+        For all of the models, the colours were implemented using vertex groups
+        and Blender's standard material creation tool. I ensured these colour
+        choices, as well as my custom textures described above, were
+        consistently clear and visible through my use of lighting. This involved
+        constructing a DirectionalLight object in three.js, before attaching
+        this object to the <em>camera, rather than the scene.</em> A
+        HemisphereLight is also present in the scene, for some extra colour
+        balancing. No matter the angle the models are viewed, their features are
+        as visible as possible, without the lighting being so bright that the
+        colours are distorted.
+      </p>
+      <p>
+        During development, there were a multitude of problems relating to
+        exporting the animations. Firstly, the second animation I made for the
+        second character used shape keys in a way that three.js simply refused
+        to load, leading to that animation needing to be remade from scratch
+        without shape keys.
+      </p>
+      <p>
+        A previous attempt to implement the 3D models took an immense amount of
+        work and involved major refactors of almost all the three.js code
+        managing the loading of animations, but all of this had to be scrapped
+        when an issue arose that caused animations to be loaded and played on
+        the wrong models, since some versions of the character models had
+        separated meshes, whereas other meshes were unified. A much simpler
+        solution was thankfully found, and is elaborated on further down this
+        page.
+      </p>
+      <p>
+        For the third and final character, an animation involving the movement
+        of his tongue took considerable effort to make, as Blender's system of
+        bone rigging and weight painting had to be learned from scratch before
+        the animation could even be keyed. Once keyed, however, the animation
+        worked surprisingly well.
+      </p>
+      <p>
+        In addition, once the current method of loading the models was found to
+        be workable, each of the models had to be re-exported so they all faced
+        the same direction when loaded. In many cases, this meant deleting and
+        redoing the keyframes for each animation, from scratch. This, sadly,
+        couldn't feasibly be done with the animations for the final character,
+        since he has multiple separate meshes for each of his models.
+      </p>
+    </div>
+    <div class="text">
+      <h2>Design</h2>
+      <p>
+        This site has been designed with a unique, yet simple and easy-to-use
+        interface. The home page contains three links to three separate
+        carousels of web pages wherein the model and animations of each
+        character can be observed. The canvas containing the 3D models in each
+        of these web pages, enabled with three.js, takes up the entire web page,
+        and navigational buttons are overlayed onto the canvas. CSS hover rules
+        were used for all of these buttons to conditionally highlight text and
+        make the design more responsive.
+      </p>
+    </div>
+    <div class="text">
+      <h2>Integration</h2>
+      <p>
+        I conducted user testing for this project by using a friend's Windows
+        laptop to download the project directory from its GitHub page, then
+        hosting the directory using XAMPP. All models, lighting, colours,
+        styling, and animations worked flawlessly.
+      </p>
+      <p>Quotes from friend: "Everything worked", "I liked it a lot!"</p>
+      <p>
+        My friend also had feedback regarding having customisable lighting
+        options, such as toggles for switching between a point light and a
+        hemisphere light.
+      </p>
+      <p>
+        I conducted further user testing with another colleague, who offered
+        feedback regarding styling for the front page. Refactoring of the CSS
+        styling for the project was necessary to respond to this feedback, and
+        this spurred me to add further transformation styling for hyperlinks as
+        well as images.
+      </p>
+      <p>
+        As a result of this piece of feedback, not only was the padding of the
+        buttons on the homepage enlarged slightly, but now all links and buttons
+        are simultaneously highlighted and temporarily grow in size when hovered
+        over with a cursor.
+      </p>
+    </div>
+    <div class="text">
+      <h2>Interaction</h2>
+      <p>
+        This website offers orbital controls and interactive buttons on each
+        model, allowing visitors to trigger three different animations on each
+        character. The animations were designed to be amusing and engaging, and
+        to fit well with the art style used for the characters. Each model also
+        has an option for visitors to toggle a wireframe view of it with the
+        click of a different button, giving a deeper insight into the
+        construction of each model.
+      </p>
+    </div>
+    <div class="text">
+      <h2>Implementation</h2>
+      <p>
+        During development, I received feedback on the lighting used for each
+        model showcase, namely, that the models were not sufficiently visible
+        from certain angles. I fixed this by adding a light source at the same
+        point in 3D space as the camera.
+      </p>
+      <p>
+        This website will be deployed and available on my personal web domain at
+        <a href="https://threedee.cr0wbar.dev">https://threedee.cr0wbar.dev</a>.
+      </p>
+    </div>
+    <div class="text">
+      <h2>Deeper understanding</h2>
+      <p>
+        This project was developed and deployed as a PHP website, and Blender
+        was learned from scratch in order to create each model. It has also been
+        deployed on my own personal web domain, with Caddy being used for web
+        server hosting, rather than Apache or Nginx.
+      </p>
+      <p>
+        I also refrained from using Bootstrap, despite it being recommended, as
+        I have much more experience in vanilla CSS and am more confident in
+        making my own styling rules, rather than relying on a new, unfamiliar
+        library to handle this for me.
+      </p>
+      <p>
+        Version control is also being used for the project, and evidence of this
+        is available at
+        <a href="https://github.com/0cr0wbar0/threedee"
+          >https://github.com/0cr0wbar0/threedee</a
+        >. Changes are committed, then pushed to the repository on GitHub, then
+        the most recent changes are pulled to my web server.
+      </p>
+      <p>
+        Prior to undertaking this project, I had very little experience with
+        JavaScript, and none at all with three.js, and this project has given me
+        bountiful experience with both.
+      </p>
+      <p>
+        I made use of CSS media queries on this page to ensure that the three
+        images displayed above are appropriately visible on a vertical or mobile
+        viewport, and used flexboxes to achieve the same for the text content. I
+        also added a transform function to CSS that causes each image to
+        temporarily increase in size with a smooth animation when hovered over
+        with a cursor.
+      </p>
+    </div>
+    <div class="text">
+      <h2>About Us</h2>
+      <p>&check; I have included at least three models</p>
+      <p>&check; I am not submitting brands of any kind</p>
+      <p>&check; I have created a user interface to interact with my models</p>
+      <p>&check; I have tested my site with user testing</p>
+      <p>
+        &check; I have submitted both a link to the live version and a zipped
+        directory
+      </p>
+      <p>
+        &check; I have used this about page to provide development information
+      </p>
+    </div>
+    <div class="text">
+      <p>&copy; Finnian Holland</p>
+    </div>
+    <div class="text">
+      <a href="https://github.com/0cr0wbar0"
+        ><img width="40" height="40" src="github.png" alt="github logo"
+      /></a>
+    </div>
+    <div class="nav">
+      <a href="../index.html">Back</a>
+    </div>
+  </body>
 </html>
